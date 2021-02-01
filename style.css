@@ -1,0 +1,67 @@
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: rgb(83, 81, 81);
+}
+
+.header {
+  background-color: rgba(16, 118, 241, 0.281);
+  font-size: xx-large;
+  text-align: center;
+  font-weight: 600;
+  color: aliceblue;
+  border-radius: 9px;
+}
+.main {
+  display: flex;
+  background-color: rgba(245, 245, 245, 0.52);
+  justify-content: flex-start;
+}
+
+.sidebar {
+  display: flex;
+  background-color: rgba(134, 134, 134, 0.123);
+  padding: 10px;
+  flex-direction: column;
+  font-weight: 500;
+}
+button {
+  background-color: rgba(16, 118, 241, 0.281);
+  border: none;
+  border-radius: 9px;
+  margin-bottom: 10px;
+  color: aliceblue;
+}
+#form {
+  display: flex;
+  flex-direction: column;
+}
+#searchBtn {
+  margin-bottom: 20px;
+}
+.content {
+  flex-grow: 1;
+  background-color: rgb(213, 226, 241);
+  flex-basis: auto;
+  align-content: flex-start;
+}
+.current {
+  justify-content: space-around;
+  padding: 5%;
+}
+.forecast {
+  display: flex;
+  justify-content: space-between;
+  padding: 5%;
+}
+#resultBtns {
+  display: flex;
+  flex-direction: column;
+}
+
+.days {
+  display: flex;
+  justify-content: center;
+}

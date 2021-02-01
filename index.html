@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Weather Dashboard</title>
+  </head>
+  <body class="body">
+    <header class="header">Weather Dashboard</header>
+    <main class="main">
+      <div class="sidebar">
+        <form id="form">
+          <input type="text" id="cityInput" />
+          <input type="text" id="countryInput" />
+          <button id="searchBtn" type="submit">SEARCH</button>
+        </form>
+        <div id="resultBtns"></div>
+      </div>
+
+      <div class="content">
+        <div class="current">
+          <h2 id="cityName"></h2>
+          <h3 id="temprature"></h3>
+          <div id="humidity"></div>
+          <div id="windspeen"></div>
+          <div id="uvIndex"></div>
+        </div>
+
+        <div>
+          <div>
+            <h3 class="days">5 Day Forecast</h3>
+            <div class="forecast">
+              <div id="forecast-1" class="day-forecast">
+                <div class="date"></div>
+                <div class="icon"></div>
+                <div class="temp"></div>
+                <div class="humid"></div>
+              </div>
+              <div id="forecast-2" class="day-forecast">
+                <div class="date"></div>
+                <div class="icon"></div>
+                <div class="temp"></div>
+                <div class="humid"></div>
+              </div>
+              <div id="forecast-3" class="day-forecast">
+                <div class="date"></div>
+                <div class="icon"></div>
+                <div class="temp"></div>
+                <div class="humid"></div>
+              </div>
+              <div id="forecast-4" class="day-forecast">
+                <div class="date"></div>
+                <div class="icon"></div>
+                <div class="temp"></div>
+                <div class="humid"></div>
+              </div>
+              <div id="forecast-5" class="day-forecast">
+                <div class="date"></div>
+                <div class="icon"></div>
+                <div class="temp"></div>
+                <div class="humid"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
