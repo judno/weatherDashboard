@@ -1,19 +1,3 @@
-//GIVEN a weather dashboard with form inputs
-//WHEN I search for a city
-//THEN I am presented with current and future conditions for that city and that city is added to the search history
-//WHEN I view current weather conditions for that city
-//THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-//WHEN I view the UV index
-//THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-//WHEN I view future weather conditions for that city
-//THEN I am presented with a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, and the humidity
-//WHEN I click on a city in the search history
-//THEN I am again presented with current and future conditions for that city
-//WHEN I open the weather dashboard
-//THEN I am presented with the last searched city forecast
-
-//function that fetches city tokens and
-
 //file scope
 let recentResults = getRecentResults();
 let form = document.querySelector("#form");
@@ -21,15 +5,13 @@ form.onsubmit = onSearchClick;
 let resultBtns = document.querySelector("#resultBtns");
 
 renderResults();
-
+//set key
 function getSearchKey() {
   return "WEATHER_SEARCH";
 }
-
+// query api
 async function fetchCity(city, country) {
   let apiKey = "68d528c7d7233697535528349a8a896e";
-  //   let citySearch = document.getElementById("cityInput").value;
-  //   let countrySearch = document.getElementById("countryInput").value;
   let weatherApi = `https://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`;
 
   let result = { city };
@@ -60,6 +42,7 @@ async function fetchCity(city, country) {
   for (i = 1; i < 6; i++) {
     let day = res.daily[i];
 
+    // push results
     result.days.push({
       date: moment().add(i, "days").format("dddd"),
       icon: day.weather["0"].icon,
@@ -68,13 +51,9 @@ async function fetchCity(city, country) {
     });
   }
 
-  console.log(res);
-
-  console.log(result);
-
   return result;
 }
-
+//display all the values with correct iterations and data
 function displayCityData(cityData) {
   let cityName = document.querySelector("#cityName");
   let temprature = document.querySelector("#temprature");
@@ -87,8 +66,6 @@ function displayCityData(cityData) {
   humidity.innerHTML = `Humidity: ${cityData.humidity}%`;
   windspeen.innerHTML = `Windspeed: ${cityData.windspeed} KPH`;
   uvIndex.innerHTML = `UV Index: ${cityData.uvi}`;
-
-  console.log(cityData.days);
 
   for (i = 0; i < cityData.days.length; i++) {
     let day = cityData.days[i];
@@ -104,29 +81,28 @@ function displayCityData(cityData) {
   }
 }
 
+// search function
 async function onSearchClick(event) {
   event.preventDefault();
   let country = document.querySelector("#countryInput").value;
   let city = document.querySelector("#cityInput").value;
 
   let result = await fetchCity(city, country);
-
+  // display result add to previous search history
   if (result) {
     addSearchHistory(city, country);
     renderResults();
     displayCityData(result);
   } else {
-    alert("Get a dog all up in ya");
   }
 }
-
+// async function to call search and display results
 async function search(city, country) {
   let result = await fetchCity(city, country);
 
   if (result) {
     displayCityData(result);
   } else {
-    alert("Get a dog all up in ya");
   }
 }
 function clickOldResults(event) {
@@ -157,7 +133,7 @@ function addSearchHistory(city, country) {
 
   localStorage.setItem(getSearchKey(), JSON.stringify(recentResults));
 }
-
+// render results to homepage
 function renderResults() {
   resultBtns.innerHTML = "";
 
@@ -178,20 +154,3 @@ function renderResults() {
 
 // Default to melbourne
 search("Melbourne", "AU");
-
-//function to add recent search results to dom
-//function addRecentSearch() {
-//localStorage.getItem(recentResults);
-
-//add name recent searches to array to store on dom
-//
-//}
-
-//pass city name and save to local storage
-//populate dom with previous search results
-//}
-
-//fetchCity("Melbourne", "Aus");
-
-//render to dom
-// pass to 5 day forecast
